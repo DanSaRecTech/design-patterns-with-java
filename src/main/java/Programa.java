@@ -1,6 +1,6 @@
 import impl.CalcularImposto;
+import impl.ISS;
 import modal.Orcamento;
-import static modal.TipoDeImposto.ICMS;
 
 import java.math.BigDecimal;
 
@@ -14,6 +14,6 @@ public class Programa {
 
         var calculadora = CalcularImposto.builder().build();
 
-        System.out.println(calculadora.calculadora(orcamento, ICMS));
+        System.out.println(calculadora.calculadora(orcamento, new ISS()));
     }
 }

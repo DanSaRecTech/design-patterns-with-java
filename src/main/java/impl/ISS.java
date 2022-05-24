@@ -9,10 +9,10 @@ import java.math.BigDecimal;
 
 @Builder
 @AllArgsConstructor
-public class CalcularImposto {
+public class ISS implements Imposto {
 
-    public BigDecimal calculadora(Orcamento orcamento, Imposto imposto) {
-
-        return imposto.calcular(orcamento);
+    @Override
+    public BigDecimal calcular(Orcamento orcamento) {
+        return orcamento.getValor().multiply(new BigDecimal("0.6"));
     }
 }
