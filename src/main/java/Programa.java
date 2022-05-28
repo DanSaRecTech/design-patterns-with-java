@@ -8,7 +8,7 @@ public class Programa {
     public static void main(String[] args) {
 
         var orcamento1 = Orcamento.builder()
-                .valor(new BigDecimal("1000.0"))
+                .valor(new BigDecimal("200.0"))
                 .quantidadeItens(10)
                 .build();
         var orcamento2 = Orcamento.builder()
