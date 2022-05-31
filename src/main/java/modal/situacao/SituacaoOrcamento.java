@@ -23,7 +23,7 @@ public abstract class SituacaoOrcamento {
         throw new DomainException("Pedido não pode ser finalizado!");
     }
 
-    public BigDecimal calcularValorDescontoExtre(Orcamento orcamento) {
+    public BigDecimal calcularValorDescontoExtra(Orcamento orcamento) {
         return BigDecimal.ZERO;
     }
 }

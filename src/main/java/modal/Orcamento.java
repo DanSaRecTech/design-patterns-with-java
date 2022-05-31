@@ -23,8 +23,8 @@ public class Orcamento {
 
     public void aplicarDescontoExtra() {
 
-        var valorDoDescontoExtra = this.situacao.calcularValorDescontoExtre(this);
-        this.valor.subtract(valorDoDescontoExtra);
+        var valorDoDescontoExtra = this.situacao.calcularValorDescontoExtra(this);
+        this.valor = this.valor.subtract(valorDoDescontoExtra);
     }
 
     public void aprovar() {
