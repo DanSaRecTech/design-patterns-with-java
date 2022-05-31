@@ -1,30 +1,41 @@
 package modal;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import modal.situacao.EmAnalise;
+import modal.situacao.SituacaoOrcamento;
 
 import java.math.BigDecimal;
 
 @Builder
-@AllArgsConstructor
 @Data
 public class Orcamento {
 
     private BigDecimal valor;
     private int quantidadeItens;
-    private String situacao;
+    private SituacaoOrcamento situacao;
+
+    public Orcamento(BigDecimal valor, int quantidadeItens, SituacaoOrcamento situacao) {
+        this.valor = valor;
+        this.quantidadeItens = quantidadeItens;
+        this.situacao = new EmAnalise();
+    }
 
     public void aplicarDescontoExtra() {
 
-        var valorDoDescontoExtra = BigDecimal.ZERO;
-        if (situacao.equals("EM_ANALISE")) {
-            valorDoDescontoExtra = new BigDecimal("0.05");
-        }
+        var valorDoDescontoExtra = this.situacao.calcularValorDescontoExtre(this);
+        this.valor.subtract(valorDoDescontoExtra);
+    }
 
-        if (situacao.equals("APROVADO")) {
-            valorDoDescontoExtra = new BigDecimal("0.02");
-        }
-        this.valor = this.valor.subtract(valorDoDescontoExtra);
+    public void aprovar() {
+        this.situacao.aprovado(this);
+    }
+
+    public void reprovado() {
+        this.situacao.reprovar(this);
+    }
+
+    public void finalizado() {
+        this.situacao.finalizar(this);
     }
 }
