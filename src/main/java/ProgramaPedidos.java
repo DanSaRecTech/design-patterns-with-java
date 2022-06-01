@@ -1,5 +1,6 @@
 import modal.Orcamento;
 import modal.pedido.GeraPedido;
+import modal.pedido.GeraPedidoHandler;
 import modal.pedido.Pedido;
 
 import java.math.BigDecimal;
@@ -19,7 +20,6 @@ public class ProgramaPedidos {
                 .qtdDeItens(qtdDeItens)
                 .build();
 
-        geraPedido.executa();
-
+        GeraPedidoHandler.executa(geraPedido);
     }
 }
