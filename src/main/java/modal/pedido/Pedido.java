@@ -1,9 +1,10 @@
-package modal;
+package modal.pedido;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import modal.Orcamento;
 
 import java.time.LocalDateTime;
 
