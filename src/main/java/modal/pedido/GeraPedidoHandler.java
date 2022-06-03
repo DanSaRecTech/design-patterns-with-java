@@ -4,6 +4,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import modal.Orcamento;
+import modal.pedido.acao.EnviarEmail;
+import modal.pedido.acao.SalvarPedidoBD;
 
 import java.time.LocalDateTime;
 
@@ -25,7 +27,10 @@ public class GeraPedidoHandler {
                 .orcamento(orcamento)
                 .build();
 
-        System.out.println("Salvar o pedido no banco de dados do cliente: " + pedido.getNomeCliente());
-        System.out.println("Enviar email com as informações do pedido");
+        var enviarEmail = new EnviarEmail();
+        var salvarBd = new SalvarPedidoBD();
+
+        enviarEmail.executar(pedido);
+        salvarBd.executar(pedido);
     }
 }
